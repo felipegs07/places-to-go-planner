@@ -3,7 +3,7 @@ import PlaceSummary from './PlaceSummary';
 
 const PlaceList = () => {
     return (
-        <div className="place-list section">
+        <div className="place-list">
             <PlaceSummary />
             <PlaceSummary />
             <PlaceSummary />
