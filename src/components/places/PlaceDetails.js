@@ -1,6 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const PlaceDetails = (props) => {
+    if (!props.auth.uid) return <Redirect to="/" />
+
     return (
         <div className="container section place-details">
             <div className="card z-depth-0">
@@ -15,4 +19,10 @@ const PlaceDetails = (props) => {
     )
 }
 
-export default PlaceDetails;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps)(PlaceDetails);

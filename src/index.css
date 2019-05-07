@@ -15,3 +15,9 @@ html {
 .ptg-card--xsm {
     margin-top: 9px;
 }
+
+/*Link of "SAIR" button*/
+.simple-a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
