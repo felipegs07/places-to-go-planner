@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createPlace } from '../../store/actions/placeActions';
 
 class CreatePlace extends Component {
     state = {
-        place: '',
+        title: '',
         adress: '',
         date: '',
         tourId: this.props.tourId
@@ -14,7 +16,13 @@ class CreatePlace extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.createPlace(this.state);
+        this.setState({
+            title: '',
+            adress: '',
+            date: '',
+            tourId: this.props.tourId
+        })
     }
 
     render() {
@@ -23,15 +31,15 @@ class CreatePlace extends Component {
                 <h5 className="grey-text text-darken-3">Criar Lugar Para Ir</h5>
                 <div className="input-field">
                     <label htmlFor="place">Lugar:</label>
-                    <input type="text" id="place" onChange={this.handleChange} />
+                    <input type="text" id="title" onChange={this.handleChange} value={this.state.title} />
                 </div> 
                 <div className="input-field">
                     <label htmlFor="adress">Endereço:</label>
-                    <input type="text" id="adress" onChange={this.handleChange} />
+                    <input type="text" id="adress" onChange={this.handleChange} value={this.state.adress} />
                 </div>
                 <div className="input-field">
                     <label htmlFor="date">Data:</label>
-                    <input type="date" id="date" onChange={this.handleChange} />
+                    <input type="date" id="date" onChange={this.handleChange} value={this.state.date} />
                 </div> 
                 <div className="input-field">
                     <button className="btn">Criar</button>
@@ -41,4 +49,10 @@ class CreatePlace extends Component {
     }
 }
 
-export default CreatePlace;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createPlace: (place) => dispatch(createPlace(place))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreatePlace);

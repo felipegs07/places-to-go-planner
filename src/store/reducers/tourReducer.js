@@ -1,10 +1,5 @@
 const initState = {
-    tours: [
-        {id: '1', title: 'EUA 2019'},
-        {id: '2', title: 'Carnaval 2019'},
-        {id: '3', title: 'França, Espanha 2019'},
-        {id: '4', title: 'São Paulo 2019'}
-    ]
+    tours: []
 }
 
 const tourReducer = (state = initState, action) => {
