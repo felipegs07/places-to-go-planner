@@ -14,7 +14,7 @@ const TourBoard = (props) => {
                     <CreatePlace tourId={props.match.params.id} />
                 </div>
                 <div className="col s12 m6">
-                    <PlaceList />
+                    <PlaceList tourId={props.match.params.id}  />
                 </div>
             </div>
         </div>
